@@ -1,6 +1,5 @@
 use core::panic;
 use std::io;
-use std::process;
 
 trait Check {
     fn check(&self, checklen: usize) -> Result<Vec<u32>, String>;
