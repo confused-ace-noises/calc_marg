@@ -48,7 +48,10 @@ fn main() {
             .expect("something went worng");
         let input_start = match input_start.check(1) {
             Ok(r) => r[0],
-            Err(e) => process::exit(1),
+            Err(e) => {
+                println!("{}", e);
+                continue 'starting;
+            }
         };
 
         if input_start == 1 {
@@ -62,7 +65,10 @@ fn main() {
                     .expect("somethign went wrong");
                 let input_mod_1 = match input_mod_1.check(2) {
                     Ok(r) => r,
-                    Err(e) => std::process::exit(1),
+                    Err(e) => {
+                        println!("{}", e);
+                        continue 'inner_1;
+                    }
                 };
 
                 match input_mod_1.len() {
@@ -72,18 +78,17 @@ fn main() {
 
                         let margin: f64 = (((prez - cost) / prez) * 100.0) as f64;
 
-                        println!(
-                            "il margine è: {} (costo: {}, prezzo: {})",
-                            margin, cost, prez
-                        );
+                        println!("il margine è: {}", margin);
                     }
 
                     n if n > 2 => {
-                        panic!("too many args")
+                        println!("troppi argomenti sono stati dati.");
+                        continue 'inner_1;
                     }
 
                     n if n < 2 => {
-                        panic!("not enough args")
+                        println!("troppi pochi argomenti sono stati dati");
+                        continue 'inner_1
                     }
 
                     // ? idek why this is needed.
@@ -103,7 +108,10 @@ fn main() {
                     .expect("somethign went wrong");
                 let input_mod_1 = match input_mod_1.check(2) {
                     Ok(r) => r,
-                    Err(e) => std::process::exit(1),
+                    Err(e) => {
+                        println!("{} \n", e);
+                        continue 'inner_2;
+                    },
                 };
 
                 match input_mod_1.len() {
@@ -113,15 +121,18 @@ fn main() {
 
                         let prez: f64 = ((cost / (1.0 - (marg / 100.0))) * 100.0) as f64;
 
-                        println!("il margine è: {}", prez);
+                        println!("il margine è: {}\n", prez);
+                        continue 'starting;
                     }
 
                     n if n > 2 => {
-                        panic!("too many args")
+                        println!("troppi argomenti sono stati dati.");
+                        continue 'inner_2;
                     }
 
                     n if n < 2 => {
-                        panic!("not enough args")
+                        println!("troppi pochi argomenti sono stati dati");
+                        continue 'inner_2
                     }
 
                     // ? idek why this is needed.
