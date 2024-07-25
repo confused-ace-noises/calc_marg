@@ -1,5 +1,5 @@
 use core::panic;
-use std::{borrow::BorrowMut, io::{self, Split}};
+use std::io;
 
 trait Check {
     fn check(&self) -> Vec<u32>;
@@ -18,7 +18,6 @@ impl Check for String {
 }
 
 
-use self::Check as OtherCheck;
 fn main() {
     println!("seleziona una modalità: \n\t1: MARGINE <-- prezzo e costo. \n\t2: PREZZO <-- costo e margine. \n\t3: manuale");
     let mut input_start = String::new();
