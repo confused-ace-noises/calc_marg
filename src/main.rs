@@ -61,7 +61,7 @@ fn main() {
                 let mut input_mod_1 = String::new();
                 io::stdin()
                     .read_line(&mut input_mod_1)
-                    .expect("somethign went wrong");
+                    .expect("something went wrong");
                 let input_mod_1 = match input_mod_1.check(2) {
                     Ok(r) => r,
                     Err(e) => {
@@ -121,7 +121,7 @@ fn main() {
 
                         let prez: f64 = ((cost / (1.0 - (marg / 100.0))) * 100.0) as f64;
 
-                        println!("il margine è: {}\n", prez);
+                        println!("il prezzo è: {}\n", prez);
                         continue 'starting;
                     }
 
