@@ -78,6 +78,7 @@ fn main() {
                         let margin: f64 = (((prez - cost) / prez) * 100.0) as f64;
 
                         println!("il margine è: {}", margin);
+                        continue 'starting
                     }
 
                     n if n > 2 => {
